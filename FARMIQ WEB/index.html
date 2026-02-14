@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmIQ® Official</title>
+    <link rel="shortcut icon" href="./title.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style for loader */
+        body {
+            overflow: hidden;
+            margin: 0;
+            background-color: #EFEAE3;
+            /* Full background color */
+        }
+
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+            /* Loader background color */
+            z-index: 9999;
+            animation: fadeOut 1.5s forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-150%);
+                opacity: 0;
+            }
+        }
+
+        #page1 {
+            min-height: 100vh;
+            width: 100%;
+            background-color: #EFEAE3;
+            /* Full background color for page */
+            position: relative;
+            padding: 1em 2vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            /* Align items to the top */
+            align-items: center;
+            opacity: 0;
+            /* Hidden until loader fades */
+            transition: transform 0.3s, opacity 0.5s, border-color 0.3s;
+        }
+
+        /* Style for the heading */
+        #page1 h1 {
+            font-size: 3vw;
+            color: #000;
+            margin-bottom: 2em;
+            /* Increased margin to create space from boxes */
+            text-align: center;
+            transition: transform 0.3s, opacity 0.5s, border-color 0.3s;
+            margin-top: 40px;
+        }
+
+        /* Grid layout for hover boxes */
+        .hover-box-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1em;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-top: -40px;
+        }
+
+        /* Square boxes with centered text */
+        .hover-box {
+            width: 100%;
+            height: 280px;
+            /* Fixed height */
+            background-color: rgb(113, 255, 120);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(255, 255, 255);
+            font-size: 35px;
+            /* Adjust font size if needed */
+            border-radius: 10px;
+            border: 2px solid rgb(171, 251, 199);
+            transition: transform 0.3s, opacity 0.5s, border-color 0.3s;
+            opacity: 0;
+            position: relative;
+            transform: translateY(20px);
+            /* Initial position for animation */
+            cursor: pointer;
+            /* Change cursor to pointer on hover */
+        }
+
+        /* Hover effect */
+        .hover-box:hover {
+            transform: scale(1.1);
+            border-color: rgb(0, 0, 0);
+            background-color: rgb(0, 255, 13);
+            color: rgb(0, 0, 0);
+        }
+
+        /* Responsive design: Adjust number of boxes per row */
+        @media (max-width: 1024px) {
+            .hover-box-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hover-box-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hover-box {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hover-box-container {
+                grid-template-columns: 1fr;
+                font-size: 26px;
+            }
+
+            #page1 h1 {
+                font-size: 4vw;
+            }
+
+            .hover-box {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader">
+        <h1>FarmIQ</h1>
+    </div>
+
+    <div id="main">
+        <div id="page1">
+            <h1>Select the language</h1>
+            <div class="hover-box-container">
+                <div class="hover-box" onclick="navigateTo('englishweb.html')">English</div>
+                <div class="hover-box" onclick="navigateTo('tamilweb.html')">தமிழ்</div>
+                <div class="hover-box" onclick="navigateTo('hindiweb.html')">जर्मन</div>
+                <div class="hover-box" onclick="navigateTo('Chineseweb.html')">中国人</div>
+                <div class="hover-box" onclick="navigateTo('frenchweb.html')">Française</div>
+                <div class="hover-box" onclick="navigateTo('germanweb.html')">Deutsch</div>
+                <div class="hover-box" onclick="navigateTo('arabicweb.html')">عربي</div>
+                <div class="hover-box" onclick="navigateTo('spanishweb.html')">Español</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Wait for the page to load, then display the main content
+        window.onload = function () {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none'; // Hide loader
+                document.getElementById('main').style.display = 'block'; // Show main content
+                document.getElementById('page1').style.opacity = '1'; // Ensure page1 is visible
+
+                // Fade in each hover box one by one
+                const boxes = document.querySelectorAll('.hover-box');
+                boxes.forEach((box, index) => {
+                    setTimeout(() => {
+                        box.style.opacity = '1'; // Set opacity to 1 to fade in
+                        box.style.transform = 'translateY(0)'; // Reset transform to original position
+                    }, index * 100); // Delay each box by 500ms times its index
+                });
+            }, 4500); // Adjust time to match the loader display time
+        };
+
+        // Function to navigate to a specific page
+        function navigateTo(page) {
+            window.location.href = page; // Redirect to the specified page
+        }
+    </script>
+</body>
+
+</html>

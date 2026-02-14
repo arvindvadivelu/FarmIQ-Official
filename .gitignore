@@ -1,0 +1,11 @@
+.venv/
+venv/
+.vscode/
+__pycache__/
+*.pyc
+FARMIQ WEB/FarmIQ/venv/
+.vscode/
+*.h5
+*.mp4
+*.zip
+*.pt
