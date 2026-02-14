@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="FARMIQ WEB/FarmIQ/FarmIQ logo.png" alt="FarmIQ Logo" width="380" height="420">
+  <img src="/assets/FarmIQ logo.png" alt="FarmIQ Logo" width="280" height="320">
 
   <h1 style="font-weight: 700; margin-bottom: 0;">
     FarmIQ® Official | Smart Agriculture Intelligence Platform
